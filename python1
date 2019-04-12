@@ -1,0 +1,78 @@
+'''
+#今天是一年中的第几天
+import datetime
+
+dtstr = input('Enter the datetime : (20170228):')
+dt = datetime.datetime.strptime(dtstr,"%Y%m%d")
+another_dtstr = dtstr[:4] + '0101'
+another_dt = datetime.datetime.strptime(another_dtstr,"%Y%m%d")
+print(int((dt-another_dt).days)+1)
+'''
+
+'''
+#计数器
+import string
+
+s = input('input a string:')
+letter = 0
+space = 0
+digit = 0
+other = 0
+for c in s:
+    if c.isalpha():
+        letter+=1
+    elif c.isspace():
+        space+=1
+    elif c.isdigit():
+        digit+=1
+    else:
+        other+=1
+print('There are %d letters,%d spaces,%d digits\
+and %d other characters in your string.'\
+    %(letter,space,digit,other))
+        
+'''
+'''
+#归并排序
+#merge sort
+
+import random
+def merge_sort(data_list):
+    if len(data_list) <= 1:
+        return data_list
+    middle = int(len(data_list)/2)
+    left = merge_sort(data_list[:middle])
+    right = merge_sort(data_list[middle:])
+    merged = []
+    while left and right:
+        merged.append(left.pop(0) if left[0] <= right[0] else right.pop(0))
+    merged.extend(right if right else left)
+    return merged
+
+data_list = [random.randint(1,100) for _ in range(50)]
+print(merge_sort(data_list))
+'''
+
+"""
+#猜数字
+import random
+
+secret = random.randint(1,100)
+print('''猜数游戏！
+我想了一个1-100的整数，你最多可以猜6次，看看能猜出来吗？''')
+tries = 1
+while tries <= 6:
+    guess = int(input("1-100的整数，第%d次猜，请输入：" % (tries,)))
+    if guess ==secret:
+        print("恭喜你猜对了，你只猜了%d次！ \n就是这个： %d！" % (tries,secret))
+        break
+    elif guess > secret:
+        print("不好意思，您的数大了一点")
+    elif guess < secret:
+        print("不好意思，您的数小了一点")
+    tries += 1
+else:
+    print("sorry,Game over,The digit is %d"%(secret,))           
+"""
+
+
